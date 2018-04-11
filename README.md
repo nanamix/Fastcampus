@@ -15,6 +15,7 @@
     - 서버리스(진짜 서버가 없을까?) 아키텍처
     - **마이크로 서비스 아키텍처**
   - *Docker 맛보기 (Docker hub를 통해 오픈소스 설치해보기)* - **1 hour**
+    - Docker 개요(Linux 커널, etc...)
     - Nginx 웹서버 설치(8080:80 포트 매핑)
     - MySQL 설치(기본 설정 및 MySQL client tool 연결)
   - NPM(Node package manager)을 통해 Node.js(v8.11.1 LTS) 설치해보기 - **1hour**
@@ -23,7 +24,7 @@
     - 프로젝트 구성에 대한 **Best practice**
 - 2주차
   - *Node.js, Express(Web framework), Knexjs(Query builder)을 통해 간단한 CRUD Api 작성해보기* - **4hour**
-    - 데이터 요청/응답 REST Api
+    - 데이터 요청/응답 기능
     - JWT(Json web token) 인증/인가 기능
     - Email push 기능
     - Postman, Rest client, swagger 등 Api docs를 만들고 테스트
@@ -44,3 +45,10 @@
       - CMD
       - etc...
     - 2주차 때 만든 프로젝트를 기반으로 하는 **Docker container** 운영
+- 4주차
+  - *AWS 사용해보기* - **4 hour**
+    - AWS EC2(Amazon linux) 환경에 Docker 설치 및 3주차 때 만든 Dockerfile을 통해 컨테이너 구축하기
+    - AWS RDS 환경에서 MySQL 설정
+    - AWS Lambda + API Gateway로 EC2 없이(서비리스) 3주차 때 고민한 외부에 오픈할 서비스를 가져와 구축하기
+    - AWS ELB을 통한 트래픽 관리
+    - Route53에 도메인 등록, ELB를 연결하여 main.\*, api.\* 등 도메인 별 End-point 설정
