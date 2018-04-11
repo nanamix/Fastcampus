@@ -17,7 +17,13 @@
   - *Docker 맛보기 (Docker hub를 통해 오픈소스 설치해보기)* - **1 hour**
     - Nginx 웹서버 설치(8080:80 포트 매핑)
     - MySQL 설치(기본 설정 및 MySQL client tool 연결)
-  - NPM(Node package manager)을 통해 Node.js(v8.11.1 LTS) 설치해보기 - 1hour
+  - NPM(Node package manager)을 통해 Node.js(v8.11.1 LTS) 설치해보기 - **1hour**
     - NPM vs Yarn
     - what is package.json?
     - 프로젝트 구성에 대한 **Best practice**
+- 2주차
+  - *Node.js, Express(Web framework), Knexjs(Query builder)을 통해 간단한 CRUD Api 작성해보기* - **4hour**
+    - 데이터 요청/응답 REST Api
+    - JWT(Json web token) 인증/인가 서비스
+    - Email push 서비스
+    - Postman, Rest client, swagger 등 Api docs를 만들고 테스트
