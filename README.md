@@ -63,3 +63,10 @@
     - 서비스(컨테이너 그룹) 별 로드밸런싱
     - Route53 도메인/서브도메인 매칭
     - 트래픽 관리 방법 및 **컨테이너 스케일 아웃** 설정
+- 6주차
+  - *AWS Codepipeline을 활용한 CI/CD* - **4 hour**
+    - CI/CD 간단한 개요
+    - Github project, webhook 설정
+    - 컨테이너 별 자동 배치를 위한 Dockerfile 재작성
+    - AWS Codebuild를 통한 자동 빌드(Docker) 설정
+    - Codepipeline + Codebuild + ECS를 활용한 **무중단(블루-그린)** 배포
