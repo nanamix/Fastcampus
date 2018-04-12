@@ -70,3 +70,10 @@
     - 컨테이너 별 자동 배치를 위한 Dockerfile 재작성
     - AWS Codebuild를 통한 자동 빌드(Docker) 설정
     - Codepipeline + Codebuild + ECS를 활용한 **무중단(블루-그린)** 배포
+- 7, 8주차 (더 해야 할 내용 키워드만 정리)
+  - AWS Beanstalk
+  - AWS S3
+  - AWS Cloundformation
+  - Monitoring (AWS Cloudwatch, ELK stack, Grafana 등)
+  - APM (Pinpoint 등)
+  - Stress test(nGrinder, jMeter 등)
