@@ -52,3 +52,14 @@
     - AWS Lambda + API Gateway로 EC2 없이(서비리스) 3주차 때 고민한 외부에 오픈할 서비스를 가져와 구축하기
     - AWS ELB을 통한 트래픽 관리
     - Route53에 도메인 등록, ELB를 연결하여 main.\*, api.\* 등 도메인 별 End-point 설정
+- 5주차
+  - *AWS ECS를 활용한 Container orchestration* - **2 hour**
+    - AWS ECR에 n개의 Docker file push
+    - EC2 n대를 구성한 후 ECR(docker file)을 기반으로 하여 ECS로 **클러스터링**
+      - 작업 정의 구성
+      - 컨테이너 별 포트 매핑
+      - 컨테이너 Metric(시스템 자원) 배치
+  - *AWS ALB(Aplication load balancer)를 활용한 컨테이너 로드밸런싱* - **2 hour**
+    - 서비스(컨테이너 그룹) 별 로드밸런싱
+    - Route53 도메인/서브도메인 매칭
+    - 트래픽 관리 방법 및 **컨테이너 스케일 아웃** 설정
