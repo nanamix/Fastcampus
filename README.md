@@ -1,11 +1,13 @@
 # Fastcampus
 
 # 커리큘럼
-> 정해진 커리큘럼이 아닌, 제가 생각 중인 강의 방식을 간략히 적어두었습니다.
-> 추후 논의가 필요합니다.
-> 8주차(한 주 4시간) 기준으로 작성되었습니다.
+<!-- > 정해진 커리큘럼이 아닌, 제가 생각 중인 강의 방식을 간략히 적어두었습니다.
+> 추후 논의가 필요합니다. -->
+> 6주차(한 주 4시간) 기준으로 작성되었습니다.
 
-- 1주차
+- 1주차 - `AWS 맛보기`
+
+<!-- - 1주차
   - *Javascript, Node.js*의 구동 방식에 대한 설명 - **1 hour**
     - Function language에 대한 간단한 개요
     - Node.js V8 Engine(Chrome browser engine을 왜 가져다 썼을까?) - **Event loop**의 장단점
@@ -76,4 +78,4 @@
   - AWS Cloundformation
   - Monitoring (AWS Cloudwatch, ELK stack, Grafana 등)
   - APM (Pinpoint 등)
-  - Stress test(nGrinder, jMeter 등)
+  - Stress test(nGrinder, jMeter 등) -->
