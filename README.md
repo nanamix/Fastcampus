@@ -6,7 +6,76 @@
 > 6주차(한 주 4시간) 기준으로 작성되었습니다. 개념 정립 -> 실습 단계가 아닌 실습 이후 개념 설명을 기본 과정으로 생각하고 있습니다. ```ex) 먼저 Nginx 구축, 운영을 해보고 웹서버를 띄우고 운영하는 이유에 대한 개념 설명```
 
 - 1주차 `웹 서버 구축` - 4hour
-  - 테스트
+  > 실습 - 3hour
+  - 로컬 환경에서 Nginx 설치, localhost:80로 접속하여 Hello NginX 웹 화면 보기
+  - Docker 설치, Docker hub를 통해 Nginx 설치
+  - AWS EC2 인스턴스 생성 후 해당 환경에서 Nginx 설치하여 외부 웹을 통해 접속
+  > 개념 설명 - 1hour
+  - *서버 아키텍처* 비교
+    - 모노리틱(기존에 많고 많았던...) 아키텍처
+    - 서버리스(진짜 서버가 없을까?) 아키텍처
+    - **마이크로 서비스 아키텍처**
+  - Docker 이해
+    - Docker 개념 및 역사
+    - Linux 컨테이너 기술에 대한 개념
+
+- 2주차 `네트워킹 환경 조성` - 4hour
+  > 실습 - 3hour
+  - 로컬환경에서 포트포워딩 
+  - AWS EC2 네트워크 인터페이스 환경을 통한 포트포워딩
+  - Nginx - Nginx 로드밸런싱 
+  - AWS ELB 로드밸런싱
+  - AWS EC2 + ELB 환경에서 Auto scaleout 환경 구축
+  > 개념 - 1hour
+  - 네트워크 기본
+  - AWS Elastic ip/dns
+  - AWS IAM
+  - AWS SDK / CLI
+
+- 3주차 `웹 서버 + WAS + DB서버 **간이 운영 환경 구축(1, 2주차 복습)**` - 4hour
+  > 실습 - 3hour
+  - WAS 프로젝트 간단 소개(Node.js) 및 EC2에서 환경 구축
+  - AWS RDS를 통한 DB 서버 구축(MySQL)
+  - 간이 인프라(웹 서버 + WAS + DB서버)를 구축해보고 통합 테스트
+  > 개념 - 1hour
+  - 해당 인프라 구축 경험을 다함께 공유하여 앞으로 어떤 기능이 있으면 좋을 지에 대한 토론하고 AWS 제품, 오픈소스 툴 등을 리서치해보기
+    - 모니터링(퍼포먼스, 로그, 메트릭 등)
+    - CI/CD
+    - VM 환경에서의 한계와 컨테이너 환경
+
+- 4주차 `CI/CD, 모니터링 환경 구축` - 4hour
+  > 실습 - 2hour
+  - AWS Beanstalk을 이용한 배포 및 서비스 관리
+  - AWS Cloudwatch를 구성하여 모니터링
+  - Pinpoint를 구성하여 퍼포먼스 모니터링
+  - ELK 스택을 구성하여 로그 모니터링
+  > 개념 - 2hour
+  - CI/CD의 이해와 배포 전략 및 정책에 대한 경험 공유
+  - 모니터링의 이해와 여러 운영 데이터를 보며 가용성, 병목화 등 운영 경험 공유
+  - DevOps의 개념과 이해
+
+- 5주차 `컨테이너 환경으로의 이전` - 4hour
+  > 실습/개념 - 4hour
+  - 1~4주차에 구축한 인프라 환경을 컨테이너 환경으로 이전, 구축하기
+    - *Docker file 작성 / 빌드, 컨테이너 운영하기* - **2 hour**
+      - Docker 명령어
+      - Dockerfile 작성
+    - *AWS ECS를 활용한 Container orchestration* - **2 hour**
+      - AWS ECR에 n개의 Docker file push
+      - EC2 n대를 구성한 후 ECR(docker file)을 기반으로 하여 ECS로 **클러스터링**
+        - 작업 정의 구성
+        - 컨테이너 별 포트 매핑
+        - 컨테이너 Metric(시스템 자원) 배치
+    - *AWS ALB(Aplication load balancer)를 활용한 컨테이너 로드밸런싱* 
+    - *AWS Codepipeline을 활용한 CI/CD* - **4 hour**
+      - Github project, webhook 설정
+      - 컨테이너 별 자동 배치를 위한 Dockerfile 재작성
+      - AWS Codebuild를 통한 자동 빌드(Docker) 설정
+      - Codepipeline + Codebuild + ECS를 활용한 **무중단(블루-그린)** 배포
+
+- 6주차 `Dev/Ops` - 4hour
+  - 개발 환경과 운영 환경
+  - 작성중
 
 <!-- - 1주차
   - *Javascript, Node.js*의 구동 방식에 대한 설명 - **1 hour**
