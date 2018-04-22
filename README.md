@@ -10,7 +10,7 @@
   - 로컬 환경에서 Nginx 설치, localhost:80로 접속하여 Hello NginX 웹 화면 보기
   - Docker 설치, Docker hub를 통해 Nginx 설치
   - AWS EC2 인스턴스 생성 후 해당 환경에서 Nginx 설치하여 외부 웹을 통해 접속
-  </br>
+
   > 개념 설명 - 1hour
   - *서버 아키텍처* 비교
     - 모노리틱(기존에 많고 많았던...) 아키텍처
@@ -27,7 +27,7 @@
   - Nginx - Nginx 로드밸런싱 
   - AWS ELB 로드밸런싱
   - AWS EC2 + ELB 환경에서 Auto scaleout 환경 구축
-  </br>
+  
   > 개념 - 1hour
   - 네트워크 기본
   - AWS Elastic ip/dns
