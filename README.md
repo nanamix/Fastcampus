@@ -1,153 +1,89 @@
-# Fastcampus
-
 # 커리큘럼
-<!-- > 정해진 커리큘럼이 아닌, 제가 생각 중인 강의 방식을 간략히 적어두었습니다.
-> 추후 논의가 필요합니다. -->
-> 6주차(한 주 4시간) 기준으로 작성되었습니다. 개념 정립 -> 실습 단계가 아닌 실습 이후 개념 설명을 기본 과정으로 생각하고 있습니다. ```ex) 먼저 Nginx 구축, 운영을 해보고 웹서버를 띄우고 운영하는 이유에 대한 개념 설명```
 
-- 1주차 `웹 서버 구축` - 4hour
-  > 실습 - 3hour
-  - 로컬 환경에서 Nginx 설치, localhost:80로 접속하여 Hello NginX 웹 화면 보기
-  - Docker 설치, Docker hub를 통해 Nginx 설치
-  - AWS EC2 인스턴스 생성 후 해당 환경에서 Nginx 설치하여 외부 웹을 통해 접속
+## 1주차
+### 1) 웹 서버 구성	
+서비스 운영에 기본이 되는 웹 서버를 로컬 환경, 클라우드 환경, 컨테이너 환경에 각각 구축하며 각 환경의 장, 단점과 전체적인 서버 아키텍처에 대한 기본 지식을 습득합니다.
 
-  > 개념 설명 - 1hour
-  - *서버 아키텍처* 비교
-    - 모노리틱(기존에 많고 많았던...) 아키텍처
-    - 서버리스(진짜 서버가 없을까?) 아키텍처
-    - **마이크로 서비스 아키텍처**
-  - Docker 이해
-    - Docker 개념 및 역사
-    - Linux 컨테이너 기술에 대한 개념
+- 로컬 환경에서 Nginx 설치, localhost:80로 접속하여 Hello NginX 웹 화면 보기
+- Docker 설치, Docker hub를 통해 Nginx 설치
+- AWS EC2 인스턴스 생성 후 해당 환경에서 Nginx 설치하여 외부에서 접속
 
-- 2주차 `네트워킹 환경 조성` - 4hour
-  > 실습 - 3hour
-  - 로컬환경에서 포트포워딩 
-  - AWS EC2 네트워크 인터페이스 환경을 통한 포트포워딩
-  - Nginx - Nginx 로드밸런싱 
-  - AWS ELB 로드밸런싱
-  - AWS EC2 + ELB 환경에서 Auto scaleout 환경 구축
-  
-  > 개념 - 1hour
-  - 네트워크 기본
-  - AWS Elastic ip/dns
-  - AWS IAM
-  - AWS SDK / CLI
+### 2) 서버 아키텍처와 컨테이너 환경	
+모든 상황을 해결하는 하나의 서버 아키텍처는 없습니다. 따라서, 각 상황에 맞는 서버 아키텍처를 알아보며, 현업에서는 어떤 방식으로 서버를 운영하는지 다양한 사례들을 살펴봅니다.
 
-- 3주차 `웹 서버 + WAS + DB서버 **간이 운영 환경 구축(1, 2주차 복습)**` - 4hour
-  > 실습 - 3hour
-  - WAS 프로젝트 간단 소개(Node.js) 및 EC2에서 환경 구축
-  - AWS RDS를 통한 DB 서버 구축(MySQL)
-  - 간이 인프라(웹 서버 + WAS + DB서버)를 구축해보고 통합 테스트
-  > 개념 - 1hour
-  - 해당 인프라 구축 경험을 다함께 공유하여 앞으로 어떤 기능이 있으면 좋을 지에 대한 토론하고 AWS 제품, 오픈소스 툴 등을 리서치해보기
-    - 모니터링(퍼포먼스, 로그, 메트릭 등)
-    - CI/CD
-    - VM 환경에서의 한계와 컨테이너 환경
+- 서버 아키텍처 비교
+  - 모노리틱 아키텍처
+  - 서버리스 아키텍처
+  - 마이크로 서비스 아키텍처
+- Docker 이해
+  - Docker 개념 및 역사
+  - Linux 컨테이너 기술에 대한 개념
 
-- 4주차 `CI/CD, 모니터링 환경 구축` - 4hour
-  > 실습 - 2hour
-  - AWS Beanstalk을 이용한 배포 및 서비스 관리
-  - AWS Cloudwatch를 구성하여 모니터링
-  - Pinpoint를 구성하여 퍼포먼스 모니터링
-  - ELK 스택을 구성하여 로그 모니터링
-  > 개념 - 2hour
-  - CI/CD의 이해와 배포 전략 및 정책에 대한 경험 공유
-  - 모니터링의 이해와 여러 운영 데이터를 보며 가용성, 병목화 등 운영 경험 공유
-  - DevOps의 개념과 이해
+## 2주차
 
-- 5주차 `컨테이너 환경으로의 이전` - 4hour
-  > 실습/개념 - 4hour
-  - 1~4주차에 구축한 인프라 환경을 컨테이너 환경으로 이전, 구축하기
-    - *Docker file 작성 / 빌드, 컨테이너 운영하기* - **2 hour**
-      - Docker 명령어
-      - Dockerfile 작성
-    - *AWS ECS를 활용한 Container orchestration* - **2 hour**
-      - AWS ECR에 n개의 Docker file push
-      - EC2 n대를 구성한 후 ECR(docker file)을 기반으로 하여 ECS로 **클러스터링**
-        - 작업 정의 구성
-        - 컨테이너 별 포트 매핑
-        - 컨테이너 Metric(시스템 자원) 배치
-    - *AWS ALB(Aplication load balancer)를 활용한 컨테이너 로드밸런싱* 
-    - *AWS Codepipeline을 활용한 CI/CD* - **4 hour**
-      - Github project, webhook 설정
-      - 컨테이너 별 자동 배치를 위한 Dockerfile 재작성
-      - AWS Codebuild를 통한 자동 빌드(Docker) 설정
-      - Codepipeline + Codebuild + ECS를 활용한 **무중단(블루-그린)** 배포
+### 1) 다중 서버 환경 구성	
+실제 운영 환경에는 하나의 서버로 운영할 수 없습니다. 왜냐하면, 하나의 서버에 장애가 생길수도 있고, 트래픽이 너무 많아질 수도 있기 때문입니다. 따라서, 서버에 문제가 생기거나 트래픽이 몰려도 장애없는 서버를 구성하는 방법을 배웁니다.
 
-- 6주차 `Dev/Ops` - 4hour
-  - 개발 환경과 운영 환경
-  - 작성중
+- AWS ELB을 활용하여 로드밸런싱 환경 구축
+- AWS Auto Scaling Group을 이용한 다중 서버 구성
+- Failover 아키텍처 구성
 
-<!-- - 1주차
-  - *Javascript, Node.js*의 구동 방식에 대한 설명 - **1 hour**
-    - Function language에 대한 간단한 개요
-    - Node.js V8 Engine(Chrome browser engine을 왜 가져다 썼을까?) - **Event loop**의 장단점
-    - Typescript 간단히 보기
-  - *서버 아키텍처* 비교 - **1 hour**
-    - 모노리틱(기존에 많고 많았던...) 아키텍처
-    - 서버리스(진짜 서버가 없을까?) 아키텍처
-    - **마이크로 서비스 아키텍처**
-  - *Docker 맛보기 (Docker hub를 통해 오픈소스 설치해보기)* - **1 hour**
-    - Docker 개요(Linux 커널, etc...)
-    - Nginx 웹서버 설치(8080:80 포트 매핑)
-    - MySQL 설치(기본 설정 및 MySQL client tool 연결)
-  - NPM(Node package manager)을 통해 Node.js(v8.11.1 LTS) 설치해보기 - **1hour**
-    - NPM vs Yarn
-    - what is package.json?
-    - 프로젝트 구성에 대한 **Best practice**
-- 2주차
-  - *Node.js, Express(Web framework), Knexjs(Query builder)을 통해 간단한 CRUD Api 작성해보기* - **4hour**
-    - 데이터 요청/응답 기능
-    - JWT(Json web token) 인증/인가 기능
-    - Email push 기능
-    - Postman, Rest client, swagger 등 Api docs를 만들고 테스트
-- 3주차
-  - *2주차 때 만든 프로젝트를 서비스 단위로 분할하기* - **2 hour**
-    - why?
-    - 서비스 별 end point 및 라우팅 구성
-    - **외부에 오픈될 서비스**와 **내부에서만 접근이 가능한 서비스 단위**로 생각해보기
-    - 메인(비즈니스 로직) 서비스와 인증/인가, 이메일(내부) 서비스 통신
-  - *Docker file 작성 / 빌드, 컨테이너 운영하기* - **2 hour**
-    - Docker 명령어
-      - run
-      - build
-      - option(etc...)
-    - Dockerfile 작성
-      - RUN
-      - FROM
-      - CMD
-      - etc...
-    - 2주차 때 만든 프로젝트를 기반으로 하는 **Docker container** 운영
-- 4주차
-  - *AWS 사용해보기* - **4 hour**
-    - AWS EC2(Amazon linux) 환경에 Docker 설치 및 3주차 때 만든 Dockerfile을 통해 컨테이너 구축하기
-    - AWS RDS 환경에서 MySQL 설정
-    - AWS Lambda + API Gateway로 EC2 없이(서비리스) 3주차 때 고민한 외부에 오픈할 서비스를 가져와 구축하기
-    - AWS ELB을 통한 트래픽 관리
-    - Route53에 도메인 등록, ELB를 연결하여 main.\*, api.\* 등 도메인 별 End-point 설정
-- 5주차
-  - *AWS ECS를 활용한 Container orchestration* - **2 hour**
-    - AWS ECR에 n개의 Docker file push
-    - EC2 n대를 구성한 후 ECR(docker file)을 기반으로 하여 ECS로 **클러스터링**
-      - 작업 정의 구성
-      - 컨테이너 별 포트 매핑
-      - 컨테이너 Metric(시스템 자원) 배치
-  - *AWS ALB(Aplication load balancer)를 활용한 컨테이너 로드밸런싱* - **2 hour**
-    - 서비스(컨테이너 그룹) 별 로드밸런싱
-    - Route53 도메인/서브도메인 매칭
-    - 트래픽 관리 방법 및 **컨테이너 스케일 아웃** 설정
-- 6주차
-  - *AWS Codepipeline을 활용한 CI/CD* - **4 hour**
-    - CI/CD 간단한 개요
-    - Github project, webhook 설정
-    - 컨테이너 별 자동 배치를 위한 Dockerfile 재작성
-    - AWS Codebuild를 통한 자동 빌드(Docker) 설정
-    - Codepipeline + Codebuild + ECS를 활용한 **무중단(블루-그린)** 배포
-- 7, 8주차 (더 해야 할 내용 키워드만 정리)
-  - AWS Beanstalk
-  - AWS S3
-  - AWS Cloundformation
-  - Monitoring (AWS Cloudwatch, ELK stack, Grafana 등)
-  - APM (Pinpoint 등)
-  - Stress test(nGrinder, jMeter 등) -->
+### 2) 네트워크 기본	
+서버를 운영하며 알아야 할 기초적인 네트워크 지식을 짚고 갑니다.
+
+- 포트포워딩
+- 네트워크 기본
+- 가용성
+
+## 3주차
+
+### 1) 웹 서버 + WAS + DB서버 - 간이 운영 환경 구축	
+전체적인 서버 아키텍처 부터 서버 내부, 외부 등 운영 서버에 필요한 요소들을 배우고 구성하게 됩니다. 이 수업이 끝나면 내가 작성한 코드를 운영 환경에서 서비스 할 수 있게 됩니다.
+
+- WAS 프로젝트 간단 소개(Node.js) 및 EC2에서 환경 구축
+- AWS RDS를 통한 DB 서버 구축(MySQL)
+- 간이 인프라(웹 서버 + WAS + DB서버)를 구축해보고 통합 테스트
+
+### 2) DevOps로 넘어가기	
+함께 운영 환경을 구축해보며 어떠한 요소가 더 필요한 지 고민하고 해당 운영 스택을 기반으로 DevOps로 확장할 준비를 합니다.
+
+해당 인프라 구축 경험을 다함께 공유하여 앞으로 어떤 기능이 있으면 좋을 지에 대한 토론하고 AWS 제품, 오픈소스 툴 등을 리서치해보기
+- 모니터링(퍼포먼스, 로그, 메트릭 등
+- CI/CD
+- VM 환경에서의 한계와 컨테이너 환경
+
+## 4주차
+
+### 1) CI/CD, 모니터링 환경 구성	
+사람은 무조건 실수를 하기 때문에 단순 반복적인 업무는 최대한 기계에게 맡겨야 합니다. 코딩 이후 배포까지 필요한 수많은 작업들을 어떻게 자동화하는지 배웁니다.
+
+- AWS Beanstalk을 이용한 배포 및 서비스 관리
+- AWS Cloudwatch를 구성하여 모니터링
+- ELK 스택을 구성하여 로그 모니터링
+
+### 2) CI/CD, 모니터링 환경 구성	
+대량의 로그를 관리하는 방법과 로그에서 장애의 단서를 재빠르게 찾기 위해 사용되는 시스템들의 활용 방법을 배웁니다. 또한 자동화 된 서버 관리에 필요한 요소를 공유합니다.
+
+- 모니터링의 이해와 여러 운영 데이터를 보며 가용성, 병목화 등 운영 경험 공유
+- CI/CD의 이해와 배포 전략 및 정책에 대한 경험 공유
+
+## 5,6주차
+
+### 5-6	컨테이너 환경으로의 이전	
+1~4주차에 구축한 인프라 환경을 컨테이너 환경으로 이전, 구축하기
+
+- Docker file 작성 / 빌드, 컨테이너 운영하기
+  - Docker 명령어
+  - Dockerfile 작성
+- AWS ECS를 활용한 Container orchestration
+  - AWS ECR에 n개의 Docker file push
+  - EC2 n대를 구성한 후 ECR(docker file)을 기반으로 하여 ECS로 클러스터링
+    - 작업 정의 구성
+    - 컨테이너 별 포트 매핑
+    - 컨테이너 Metric(시스템 자원) 배치
+- AWS ALB(Aplication load balancer)를 활용한 컨테이너 로드밸런싱
+- AWS Codepipeline을 활용한 CI/CD
+  - Github webhook 설정
+  - 컨테이너 별 자동 배치를 위한 Dockerfile 재작성
+  - AWS Codebuild를 통한 자동 빌드(Docker) 설정
+  - Codepipeline + Codebuild + ECS를 활용한 무중단(블루-그린) 배포
