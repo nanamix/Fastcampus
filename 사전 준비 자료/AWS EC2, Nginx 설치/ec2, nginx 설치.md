@@ -44,6 +44,74 @@ sudo ssh -i ~/Desktop/ec2_test.pem ec2-user@{ec2_dns}
 </br></br>
 
 ## Nginx 설치
-```bash
+> 모든 과정에서 `permission denined` 에러가 발생할 경우 `sudo su` 명령어 혹은 명령어 앞에 `sudo`를 붙이셔서 root(관리자) 권한으로 실행합니다.
 
+</br>
+
+### Nginx 설치, 실행
+```bash
+sudo su # 루트 권한으로 실행
+amazon-linux-extras install -y nginx1.12 # amazon-linux-extras 레포지토리를 통해 nginx1.12 설치
+service nginx start # service 명령어를 통해 nginx 백그라운드에서 실행
+```
+
+</br>
+
+### Git 설치, 웹 프로젝트 받아오기
+```bash
+yum install -y git # yum 레포지토리를 통해 git 설치
+cd /usr/share/nginx/html/ # Nginx root 디렉토리로 이동
+git clone https://github.com/owen1025/Fastcampus-web-deploy.git # Fast-web-deploy 프로젝트 코드 받아오기
+```
+> 이 이후 해당 인스턴스 DNS 주소로 웹 브라우저에 접속해서 웹 페이지가 정상적으로 작동하는 지 확인합니다. `ex) http://ec2-13-209-87-135.ap-northeast-2.compute.amazonaws.com/Fastcampus-web-deploy/page/album/`
+
+</br>
+
+### Nginx 환경 설정 파일 수정
+```bash
+find / -name nginx.conf # nginx 설정 파일 위치 찾기
+cd /etc/nginx # 해당 경로로 이동
+cp nginx.conf nginx-copy.conf # 잘못된 수정을 하면 원래 상태로 백업을 위해 기존 설정 파일 복사
+vi nginx.conf # vi 편집기로 열기
+```
+
+```bash
+server {
+    listen       80 default_server;
+    listen       [::]:80 default_server;
+    server_name  _;
+    root         /usr/share/nginx/html/Fastcampus-web-deploy;
+
+    # Load configuration files for the default server block.
+    include /etc/nginx/default.d/*.conf;
+
+    location / {
+    }
+
+    location ~* /(album|signin) {
+        root /usr/share/nginx/html/Fastcampus-web-deploy/page;
+    }
+
+    error_page 404 /404.html;
+        location = /40x.html {
+    }
+
+    error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+    }
+}
+```
+> 파일 중간 server{} 안 내용 중 root의 directory 위치와 location ~* /(album|signin) {} block 내용을 추가하고 `:wq` 키워드로 vi 편집기를 저장하고 종료합니다.
+
+</br>
+
+```bash
+service nginx reload # nginx.conf 수정 내용을 적용하기 위해 NginX를 재기동합니다.
+```
+> 이 이후 웹 브라우저에 접속하여 디렉토리를 생략하더라도 웹 페이지가 정상적으로 작동하는 지 확인합니다. `ex) http://ec2-13-209-87-135.ap-northeast-2.compute.amazonaws.com/album/`
+
+</br>
+
+```bash
+systemctl enable nginx # AMI 빌드를 위해 인스턴스 시작(재부팅)시 자동으로 nginx를 실행합니다.
 ```
